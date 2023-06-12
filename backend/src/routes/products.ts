@@ -6,9 +6,9 @@ import { randomUUID } from "node:crypto";
 export async function productsRoutes(app: FastifyInstance) {
   // Select all products
   app.get("/", async () => {
-    const product = await knex("products").select("*");
+    const products = await knex("products").select("*");
 
-    return { product };
+    return { products };
   });
 
   // Select one product by id

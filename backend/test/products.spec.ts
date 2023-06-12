@@ -44,12 +44,42 @@ describe("Products routes", () => {
       .get("/products")
       .expect(200);
 
-    expect(listProductsResponse.body.product).toEqual([
+    expect(listProductsResponse.body.products).toEqual([
       expect.objectContaining({
         name: "p1",
         status: "active",
         price: 1000,
       }),
     ]);
+  });
+
+  it("should be able to get a specific product", async () => {
+    const createProductResponse = await request(app.server)
+      .post("/products")
+      .send({
+        name: "p1",
+        status: "active",
+        price: 1000,
+      })
+      .expect(201);
+
+    const listProductsResponse = await request(app.server)
+      .get("/products")
+      .expect(200);
+
+    const productId = listProductsResponse.body.products[0].id;
+
+    const getSpecificProductResponse = await request(app.server)
+      .get(`/products/${productId}`)
+      .expect(200);
+
+    expect(getSpecificProductResponse.body.product).toEqual(
+      expect.objectContaining({
+        id: productId,
+        name: "p1",
+        status: "active",
+        price: 1000,
+      })
+    );
   });
 });
