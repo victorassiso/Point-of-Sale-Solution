@@ -1,13 +1,6 @@
-import fastify from "fastify";
-import { knex } from "./database";
+import { app } from "./app";
 import { env } from "./env";
-import { productsRoutes } from "./routes/products";
 
-const app = fastify();
-
-app.register(productsRoutes, {
-  prefix: "products",
-});
 app
   .listen({
     port: env.PORT,

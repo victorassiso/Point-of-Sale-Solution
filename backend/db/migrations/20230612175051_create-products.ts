@@ -3,7 +3,7 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable("products", (table) => {
     table.uuid("id").primary();
-    table.text("name").notNullable().unique();
+    table.text("name").unique();
     table
       .enum("status", ["active", "inactive"])
       .notNullable()
