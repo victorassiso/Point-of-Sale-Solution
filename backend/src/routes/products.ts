@@ -3,25 +3,25 @@ import { knex } from "../database";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 
-export async function transactionsRoutes(app: FastifyInstance) {
+export async function productsRoutes(app: FastifyInstance) {
   // Select all products
   app.get("/", async () => {
-    const transaction = await knex("products").select("*");
+    const product = await knex("products").select("*");
 
-    return { transaction };
+    return { product };
   });
 
   // Select one product by id
   app.get("/:id", async (request) => {
-    const getTransactionParamsSchema = z.object({
+    const getProductParamsSchema = z.object({
       id: z.string().uuid(),
     });
 
-    const { id } = getTransactionParamsSchema.parse(request.params);
+    const { id } = getProductParamsSchema.parse(request.params);
 
-    const transaction = await knex("products").where("id", id).first();
+    const product = await knex("products").where("id", id).first();
 
-    return { transaction };
+    return { product };
   });
 
   // Create new product

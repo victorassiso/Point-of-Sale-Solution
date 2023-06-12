@@ -5,9 +5,8 @@ declare module "knex/types/tables" {
     product: {
       id: string;
       name: string;
+      status: enum;
       price: number;
-      created_at: string;
-      session_id: string;
     };
   }
 }

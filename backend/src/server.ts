@@ -1,10 +1,11 @@
 import fastify from "fastify";
 import { knex } from "./database";
 import { env } from "./env";
-import { transactionsRoutes } from "./routes/products";
+import { productsRoutes } from "./routes/products";
 
 const app = fastify();
-app.register(transactionsRoutes, {
+
+app.register(productsRoutes, {
   prefix: "products",
 });
 app
