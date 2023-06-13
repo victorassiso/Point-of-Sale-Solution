@@ -6,5 +6,5 @@ app
     port: env.PORT,
   })
   .then(() => {
-    console.log("HTTP Server Running at http://localhost:3333!");
+    console.log("🚀 HTTP Server Running at http://localhost:3333!");
   });

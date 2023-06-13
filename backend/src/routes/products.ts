@@ -26,22 +26,20 @@ export async function productsRoutes(app: FastifyInstance) {
 
   // Create new product
   app.post("/", async (request, response) => {
-    const createTransactionBodySchema = z.object({
+    const createProductBodySchema = z.object({
       name: z.string(),
       status: z.enum(["active", "inactive"]),
       price: z.number(),
     });
 
-    const { name, status, price } = createTransactionBodySchema.parse(
-      request.body
-    );
+    const { name, status, price } = createProductBodySchema.parse(request.body);
 
-    const product = await knex("products").insert({
+    await knex("products").insert({
       id: randomUUID(),
       name,
       status,
       price,
     });
-    return response.status(201).send("✔ Transaction created successfully.");
+    return response.status(201).send("✔ Product created successfully.");
   });
 }
