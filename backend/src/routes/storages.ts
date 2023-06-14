@@ -11,24 +11,11 @@ export async function storagesRoutes(app: FastifyInstance) {
     return { storages };
   });
 
-  // Select one storage by id
-  app.get("/:id", async (request) => {
-    const getStorageParamsSchema = z.object({
-      id: z.string().uuid(),
-    });
-
-    const { id } = getStorageParamsSchema.parse(request.params);
-
-    const storage = await knex("storages").where("id", id).first();
-
-    return { storage };
-  });
-
   // Create new storage
   app.post("/", async (request, response) => {
     const createStorageBodySchema = z.object({
-      store_id: z.string(),
-      product_id: z.string(),
+      store_id: z.string().uuid(),
+      product_id: z.string().uuid(),
       balance: z.number(),
     });
 
@@ -43,5 +30,18 @@ export async function storagesRoutes(app: FastifyInstance) {
       balance,
     });
     return response.status(201).send("✔ Storage created successfully.");
+  });
+
+  // Select one storage by id
+  app.get("/:id", async (request) => {
+    const getStorageParamsSchema = z.object({
+      id: z.string().uuid(),
+    });
+
+    const { id } = getStorageParamsSchema.parse(request.params);
+
+    const storage = await knex("storages").where("id", id).first();
+
+    return { storage };
   });
 }

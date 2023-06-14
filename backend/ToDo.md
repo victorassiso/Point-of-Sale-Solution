@@ -27,14 +27,13 @@
 
 ### Vendas:
 
-- [ ] O usuário deve poder realizar uma venda;
-- [ ] O usuário deve poder visualizar todas as vendas;
+- [x] O usuário deve poder realizar uma venda;
+- [x] O usuário deve poder visualizar todas as vendas;
+- [x] O usuário deve poder visualizar uma venda específica;
 
-### Fornecedores:
+### Itens de Venda:
 
-- [ ] O usuário deve poder criar novos fornecedores;
-- [ ] O usuário deve poder atualizar fornecedores;
-- [ ] O usuário deve excluir atualizar fornecedores;
+- [ ] O usuário deve poder visualizar todos os itens de uma venda específica
 
 # Requisitos de Negócio
 
