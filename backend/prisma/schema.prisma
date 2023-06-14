@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Store {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  inventories Inventory[]
+
+  @@map("stores")
+}
+
+model Product {
+  id            String        @id @default(uuid())
+  name          String        @unique
+  price         Float
+  invoice_items InvoiceItem[]
+  inventories   Inventory[]
+
+  @@map("products")
+}
+
+model Inventory {
+  id         String  @id @default(uuid())
+  balance    Int
+  store      Store   @relation(fields: [store_id], references: [id])
+  store_id   String
+  product    Product @relation(fields: [product_id], references: [id])
+  product_id String
+
+  @@map("inventories")
+}
+
+model Invoice {
+  id            String        @id @default(uuid())
+  created_at    DateTime      @default(now())
+  total         Float
+  invoice_items InvoiceItem[]
+
+  @@map("invoices")
+}
+
+model InvoiceItem {
+  id         String  @id @default(uuid())
+  amount     Int
+  price      Float
+  product    Product @relation(fields: [product_id], references: [id])
+  product_id String
+  invoice    Invoice @relation(fields: [invoice_id], references: [id])
+  invoice_id String
+
+  @@map("invoice_items")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
+
+  @@map("users")
+}
