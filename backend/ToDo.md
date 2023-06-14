@@ -33,7 +33,7 @@
 
 ### Itens de Venda:
 
-- [ ] O usuário deve poder visualizar todos os itens de uma venda específica
+- [ ] O usuário deve poder visualizar todos os itens de uma venda específica;
 
 # Requisitos de Negócio
 
