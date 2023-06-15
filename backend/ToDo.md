@@ -59,12 +59,12 @@
 ### Estoques:
 
 - [ ] Ao criar uma nova loja, seu estoque deve ser criado automaticamente;
-- [ ] Ao criar um produto, deve se incluí-lo em todos os estoques com quantidade = zero
+- [ ] Ao criar um produto, deve se incluí-lo em todos os estoques com quantidade = zero;
 - [ ] Ao criar um estoque, deve se incluir todos os produtos com quantidade = zero;
 - [ ] Quando uma loja é excluída, seu estoque é excluído junto;
 - [ ] Uma transação do estoque deve ter tipo 'entrada' ou 'saída'
-- [ ] Transações de saída devem ser vinculadas a uma venda ou conter um motivo
-- [ ] Transações de entrada devem ser vinculadas a um fornecedor ou conter um motivo
+- [ ] Transações de saída devem ser vinculadas a uma venda ou conter um motivo;
+- [ ] Transações de entrada devem ser vinculadas a um fornecedor ou conter um motivo;
 
 ### Vendas:
 
@@ -72,4 +72,5 @@
 
 # Requisitos Não Funcionais
 
-- [ ]
+- [x] A senha do usuário precisa ser criptografada;
+- [x] Os dados da aplicação precisam estar persistidos em um banco de dados PostgreSQL;
