@@ -2,7 +2,7 @@ import { makeListProductsUseCase } from "@/use-cases/factories/make-list-product
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function listProducts(
-  request: FastifyRequest,
+  _request: FastifyRequest,
   reply: FastifyReply
 ) {
   try {

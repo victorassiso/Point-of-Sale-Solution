@@ -1,8 +1,6 @@
 import { ProductsRepository } from "@/repositories/products-repository";
 import { Product } from "@prisma/client";
 
-type ListProductsRequest = void;
-
 interface ListProductsResponse {
   products: Product[];
 }
