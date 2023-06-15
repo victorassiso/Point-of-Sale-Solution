@@ -1,6 +1,5 @@
-import { ProductAlreadyExistsError } from "@/use-cases/errors/product-already-exists";
 import { ProductNotFound } from "@/use-cases/errors/product-not-found";
-import { makeUpdateProductUseCase } from "@/use-cases/factories/make-update-product-use-case copy";
+import { makeUpdateProductUseCase } from "@/use-cases/factories/make-update-product-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 

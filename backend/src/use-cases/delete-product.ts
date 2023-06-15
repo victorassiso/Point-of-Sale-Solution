@@ -2,35 +2,26 @@ import { ProductRepository } from "@/repositories/products-repository";
 import { Product } from "@prisma/client";
 import { ProductNotFound } from "./errors/product-not-found";
 
-interface UpdateProductUseCaseRequest {
+interface DeleteProductUseCaseRequest {
   id: string;
   name?: string;
   price?: number;
 }
 
-interface UpdateProductUseCaseResponse {
-  product: Product;
-}
-export class UpdateProductUseCase {
+type DeleteProductUseCaseResponse = void;
+
+export class DeleteProductUseCase {
   constructor(private productRepository: ProductRepository) {}
 
   async execute({
     id,
-    name,
-    price,
-  }: UpdateProductUseCaseRequest): Promise<UpdateProductUseCaseResponse> {
+  }: DeleteProductUseCaseRequest): Promise<DeleteProductUseCaseResponse> {
     const productWithSameId = await this.productRepository.findById(id);
 
     if (!productWithSameId) {
       throw new ProductNotFound();
     }
 
-    const product = await this.productRepository.update({
-      id,
-      name,
-      price,
-    });
-
-    return { product };
+    this.productRepository.delete(id);
   }
 }

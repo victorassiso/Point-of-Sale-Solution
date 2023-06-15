@@ -7,9 +7,10 @@ export interface ProductUpdateInput {
 }
 
 export interface ProductRepository {
-  findByName(email: string): Promise<Product | null>;
+  findByName(name: string): Promise<Product | null>;
   findById(id: string): Promise<Product | null>;
   create(data: Prisma.ProductCreateInput): Promise<Product>;
   update(data: ProductUpdateInput): Promise<Product>;
   list(): Promise<Product[]>;
+  delete(id: string): void;
 }

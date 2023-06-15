@@ -1,8 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma, Product } from "@prisma/client";
 import { ProductRepository, ProductUpdateInput } from "../products-repository";
-import { error } from "console";
-import { PrismaUsersRepository } from "./prisma-users-repository";
 
 export class PrismaProductRepository implements ProductRepository {
   async findByName(name: string) {
@@ -32,8 +30,6 @@ export class PrismaProductRepository implements ProductRepository {
   }
 
   async update(data: ProductUpdateInput): Promise<Product> {
-    // console.log("prisma-products-repository.ts");
-    // console.log(data);
     const product = await prisma.product.update({
       where: {
         id: data.id,
@@ -50,5 +46,14 @@ export class PrismaProductRepository implements ProductRepository {
     const products = await prisma.product.findMany();
 
     return products;
+  }
+
+  async delete(id: string) {
+    console.log(id);
+    await prisma.product.delete({
+      where: {
+        id,
+      },
+    });
   }
 }
