@@ -16,10 +16,10 @@
 ### Lojas:
 
 - [x] O usuário deve poder criar uma nova loja;
-- [ ] O usuário deve poder visualizar todas as lojas;
-- [ ] O usuário deve poder visualizar uma loja única;
-- [ ] O usuário deve poder atualizar lojas;
+- [x] O usuário deve poder visualizar todas as lojas;
 - [ ] O usuário deve poder excluir uma loja;
+- [ ] O usuário deve poder atualizar lojas;
+- [ ] O usuário deve poder visualizar uma loja única;
 
 ### Estoques:
 

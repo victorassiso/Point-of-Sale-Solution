@@ -29,13 +29,13 @@ model Product {
 }
 
 model Inventory {
-  id         String  @id @default(uuid())
   balance    Int
   store      Store   @relation(fields: [store_id], references: [id])
   store_id   String
   product    Product @relation(fields: [product_id], references: [id])
   product_id String
 
+  @@id([store_id, product_id])
   @@map("inventories")
 }
 
@@ -49,7 +49,6 @@ model Invoice {
 }
 
 model InvoiceItem {
-  id         String  @id @default(uuid())
   amount     Int
   price      Float
   product    Product @relation(fields: [product_id], references: [id])
@@ -57,6 +56,7 @@ model InvoiceItem {
   invoice    Invoice @relation(fields: [invoice_id], references: [id])
   invoice_id String
 
+  @@id([invoice_id, product_id])
   @@map("invoice_items")
 }
 

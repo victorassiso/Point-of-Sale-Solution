@@ -10,7 +10,7 @@ export async function deleteProduct(
   const deleteProductBodySchema = z.object({
     id: z.string().uuid(),
   });
-  console.log("DEBUG");
+
   const { id } = deleteProductBodySchema.parse(request.body);
 
   try {

@@ -6,10 +6,10 @@ interface ListProductsResponse {
 }
 
 export class ListProductsUseCase {
-  constructor(private productRepository: ProductsRepository) {}
+  constructor(private productsRepository: ProductsRepository) {}
 
   async execute(): Promise<ListProductsResponse> {
-    const products = await this.productRepository.list();
+    const products = await this.productsRepository.list();
     return { products };
   }
 }
