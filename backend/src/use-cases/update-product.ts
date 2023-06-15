@@ -1,4 +1,4 @@
-import { ProductRepository } from "@/repositories/products-repository";
+import { ProductsRepository } from "@/repositories/products-repository";
 import { Product } from "@prisma/client";
 import { ProductNotFound } from "./errors/product-not-found";
 
@@ -12,7 +12,7 @@ interface UpdateProductUseCaseResponse {
   product: Product;
 }
 export class UpdateProductUseCase {
-  constructor(private productRepository: ProductRepository) {}
+  constructor(private productRepository: ProductsRepository) {}
 
   async execute({
     id,

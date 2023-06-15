@@ -1,4 +1,4 @@
-import { ProductRepository } from "@/repositories/products-repository";
+import { ProductsRepository } from "@/repositories/products-repository";
 import { Product } from "@prisma/client";
 import { ProductNotFound } from "./errors/product-not-found";
 
@@ -11,7 +11,7 @@ interface DeleteProductUseCaseRequest {
 type DeleteProductUseCaseResponse = void;
 
 export class DeleteProductUseCase {
-  constructor(private productRepository: ProductRepository) {}
+  constructor(private productRepository: ProductsRepository) {}
 
   async execute({
     id,

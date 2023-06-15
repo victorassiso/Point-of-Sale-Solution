@@ -15,7 +15,7 @@
 
 ### Lojas:
 
-- [ ] O usuário deve poder criar uma nova loja;
+- [x] O usuário deve poder criar uma nova loja;
 - [ ] O usuário deve poder visualizar todas as lojas;
 - [ ] O usuário deve poder visualizar uma loja única;
 - [ ] O usuário deve poder atualizar lojas;
