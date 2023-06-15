@@ -23,11 +23,8 @@
 
 ### Estoques:
 
-- [ ] O usuário deve poder adicionar produtos ao estoque das lojas;
-- [ ] O usuário deve poder visualizar todos os estoques;
-- [ ] O usuário deve poder visualizar um estoque único;
-- [ ] O usuário deve poder remover produtos do estoque das lojas;
-- [ ] O usuário deve poder visualizar o histórico de transações do estoque das lojas;
+- [x] O usuário deve poder visualizar a quantidade de produtos disponíveis em cada loja
+- [ ] O usuário deve poder atualizar a quantidade de produtos disponíveis em cada loja
 
 ### Vendas:
 
@@ -58,7 +55,7 @@
 
 ### Estoques:
 
-- [ ] Ao criar uma nova loja, seu estoque deve ser criado automaticamente;
+- [x] Ao criar uma nova loja, seu estoque deve ser criado automaticamente com quantidade zero para todos os produtos;
 - [ ] Ao criar um produto, deve se incluí-lo em todos os estoques com quantidade = zero;
 - [ ] Ao criar um estoque, deve se incluir todos os produtos com quantidade = zero;
 - [ ] Quando uma loja é excluída, seu estoque é excluído junto;

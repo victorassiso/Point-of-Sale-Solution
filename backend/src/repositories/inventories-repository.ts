@@ -1,6 +1,6 @@
 import { Prisma, Inventory } from "@prisma/client";
 
-export interface InventoryUpdateInput {
+export interface InventoryCreateAndUpdateInput {
   store_id: string;
   product_id: string;
   balance: number;
@@ -13,8 +13,8 @@ export interface InventoryFindInput {
 
 export interface InventoriesRepository {
   find(data: InventoryFindInput): Promise<Inventory | null>;
-  create(data: Prisma.InventoryCreateInput): Promise<Inventory>;
-  update(data: InventoryUpdateInput): Promise<Inventory>;
+  create(data: InventoryCreateAndUpdateInput): Promise<Inventory>;
+  update(data: InventoryCreateAndUpdateInput): Promise<Inventory>;
   listAll(): Promise<Inventory[]>;
   listByStore(store_id: string): Promise<Inventory[]>;
   delete(id: string): Promise<void>;

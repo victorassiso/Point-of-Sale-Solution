@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 import {
   InventoryFindInput,
-  InventoryUpdateInput,
+  InventoryCreateAndUpdateInput,
   InventoriesRepository,
 } from "../inventories-repository";
 
@@ -17,14 +17,14 @@ export class PrismaInventoriesRepository implements InventoriesRepository {
 
     return inventory;
   }
-  async create(data: Prisma.InventoryCreateInput) {
+  async create(data: InventoryCreateAndUpdateInput) {
     const inventory = await prisma.inventory.create({
       data,
     });
 
     return inventory;
   }
-  async update(data: InventoryUpdateInput) {
+  async update(data: InventoryCreateAndUpdateInput) {
     const inventory = await prisma.inventory.update({
       where: {
         store_id_product_id: {
