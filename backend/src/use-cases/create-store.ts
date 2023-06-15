@@ -45,14 +45,6 @@ export class CreateStoreUseCase {
     for (let index = 0; index < products.length; index++) {
       // Create inventory with the recently created store id and balance = 0
       product_id = products[index].id;
-      console.log(
-        "store_id: ",
-        store_id,
-        "product_id: ",
-        product_id,
-        "balance: ",
-        balance
-      );
       await createInventoryUseCase.execute({ store_id, product_id, balance });
     }
 
