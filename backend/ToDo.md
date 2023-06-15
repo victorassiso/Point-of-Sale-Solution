@@ -6,8 +6,8 @@
 
 ### Produtos:
 
-- [ ] O usuário deve poder criar um novo produto;
-- [ ] O usuário deve poder visualizar todos os produtos;
+- [x] O usuário deve poder criar um novo produto;
+- [x] O usuário deve poder visualizar todos os produtos;
 - [ ] O usuário deve poder visualizar um produto único;
 - [ ] O usuário deve poder atualizar um produto;
 - [ ] O usuário deve poder excluir um produto;
