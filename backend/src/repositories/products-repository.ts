@@ -6,11 +6,11 @@ export interface ProductUpdateInput {
   price?: number;
 }
 
-export interface ProductRepository {
+export interface ProductsRepository {
   findByName(name: string): Promise<Product | null>;
   findById(id: string): Promise<Product | null>;
   create(data: Prisma.ProductCreateInput): Promise<Product>;
   update(data: ProductUpdateInput): Promise<Product>;
   list(): Promise<Product[]>;
-  delete(id: string): void;
+  delete(id: string): Promise<void>;
 }

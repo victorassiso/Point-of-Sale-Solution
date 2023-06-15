@@ -1,8 +1,8 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma, Product } from "@prisma/client";
-import { ProductRepository, ProductUpdateInput } from "../products-repository";
+import { Prisma } from "@prisma/client";
+import { ProductsRepository, ProductUpdateInput } from "../products-repository";
 
-export class PrismaProductRepository implements ProductRepository {
+export class PrismaProductsRepository implements ProductsRepository {
   async findByName(name: string) {
     const product = await prisma.product.findUnique({
       where: {
@@ -29,7 +29,7 @@ export class PrismaProductRepository implements ProductRepository {
     return product;
   }
 
-  async update(data: ProductUpdateInput): Promise<Product> {
+  async update(data: ProductUpdateInput) {
     const product = await prisma.product.update({
       where: {
         id: data.id,
