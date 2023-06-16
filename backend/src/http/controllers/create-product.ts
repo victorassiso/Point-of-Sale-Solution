@@ -16,14 +16,15 @@ export async function createProduct(
 
   try {
     const createProductUseCase = makeCreateProductUseCase();
-
-    await createProductUseCase.execute({ name, price });
+    const product = await createProductUseCase.execute({
+      name,
+      price,
+    });
+    return reply.status(201).send(product);
   } catch (err) {
     if (err instanceof ProductAlreadyExistsError) {
       return reply.status(409).send({ message: err.message });
     }
     throw err;
   }
-
-  return reply.status(201).send();
 }

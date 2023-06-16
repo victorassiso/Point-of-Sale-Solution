@@ -14,6 +14,7 @@ model Store {
   id          String      @id @default(uuid())
   name        String      @unique
   inventories Inventory[]
+  invoices    Invoice[]
 
   @@map("stores")
 }
@@ -29,11 +30,11 @@ model Product {
 }
 
 model Inventory {
-  balance    Int
-  store      Store   @relation(fields: [store_id], references: [id])
-  store_id   String
-  product    Product @relation(fields: [product_id], references: [id])
-  product_id String
+  balance       Int           @default(0)
+  store         Store         @relation(fields: [store_id], references: [id])
+  store_id      String
+  product       Product       @relation(fields: [product_id], references: [id])
+  product_id    String
 
   @@id([store_id, product_id])
   @@map("inventories")
@@ -42,7 +43,9 @@ model Inventory {
 model Invoice {
   id            String        @id @default(uuid())
   created_at    DateTime      @default(now())
-  total         Float
+  total         Float         @default(0)
+  store         Store         @relation(fields: [store_id], references: [id])
+  store_id      String
   invoice_items InvoiceItem[]
 
   @@map("invoices")

@@ -56,8 +56,7 @@
 ### Estoques:
 
 - [x] Ao criar uma nova loja, seu estoque deve ser criado automaticamente com quantidade zero para todos os produtos;
-- [ ] Ao criar um produto, deve se incluí-lo em todos os estoques com quantidade = zero;
-- [ ] Ao criar um estoque, deve se incluir todos os produtos com quantidade = zero;
+- [x] Ao criar um produto, deve se incluí-lo em todos os estoques com quantidade = zero;
 - [ ] Quando uma loja é excluída, seu estoque é excluído junto;
 - [ ] Uma transação do estoque deve ter tipo 'entrada' ou 'saída'
 - [ ] Transações de saída devem ser vinculadas a uma venda ou conter um motivo;
