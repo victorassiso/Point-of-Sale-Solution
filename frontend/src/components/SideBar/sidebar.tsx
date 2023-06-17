@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import profile from "../../assets/profile.png";
 import logo from "../../assets/stockwise-1.svg";
 
-export function SideBar() {
+const SideBar = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo_content}>
@@ -83,4 +83,6 @@ export function SideBar() {
       </div>
     </aside>
   );
-}
+};
+
+export default SideBar;
