@@ -16,4 +16,13 @@ export class PrismaCategoriesRepository implements CategoriesRepository {
     const categories = await prisma.category.findMany();
     return categories;
   }
+
+  async findByName(name: string) {
+    const category = await prisma.category.findUnique({
+      where: {
+        name,
+      },
+    });
+    return category;
+  }
 }
