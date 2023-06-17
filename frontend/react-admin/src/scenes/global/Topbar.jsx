@@ -17,7 +17,7 @@ const Topbar = () => {
       display="flex"
       justifyContent="space-between"
       p={2}
-      backgroundColor={colors.grey[400]}
+      backgroundColor={colors.primary[500]}
     >
       {/* LOGO */}
       <Box display="flex">
