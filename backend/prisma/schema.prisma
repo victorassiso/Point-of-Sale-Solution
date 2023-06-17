@@ -11,32 +11,34 @@ datasource db {
 }
 
 model Store {
-  id          String      @id @default(uuid())
-  name        String      @unique
-  inventories Inventory[]
-  invoices    Invoice[]
+  id                   String                 @id @default(uuid())
+  name                 String                 @unique
+  inventories          Inventory[]
+  invoices             Invoice[]
+  InventoryTransaction InventoryTransaction[]
 
   @@map("stores")
 }
 
 model Product {
-  id            String        @id @default(uuid())
-  name          String        @unique
-  price         Float
-  status        Status        @default(inactive)
-  invoice_items InvoiceItem[]
-  inventories   Inventory[]
-  product_logs  ProductLog[]
+  id                   String                 @id @default(uuid())
+  name                 String                 @unique
+  price                Float
+  status               ProductStatus          @default(inactive)
+  invoice_items        InvoiceItem[]
+  inventories          Inventory[]
+  product_logs         ProductLog[]
+  InventoryTransaction InventoryTransaction[]
 
   @@map("products")
 }
 
 model Inventory {
-  balance       Int           @default(0)
-  store         Store         @relation(fields: [store_id], references: [id])
-  store_id      String
-  product       Product       @relation(fields: [product_id], references: [id])
-  product_id    String
+  balance    Int     @default(0)
+  store      Store   @relation(fields: [store_id], references: [id])
+  store_id   String
+  product    Product @relation(fields: [product_id], references: [id])
+  product_id String
 
   @@id([store_id, product_id])
   @@map("inventories")
@@ -76,21 +78,46 @@ model User {
 }
 
 model ProductLog {
-  id            String    @id @default(uuid())
-  created_at    DateTime  @default(now())
-  product_id    String
-  product       Product   @relation(fields: [product_id], references: [id])
-  name          String
-  price         Float
-  status        Status
+  id         String        @id @default(uuid())
+  created_at DateTime      @default(now())
+  product_id String
+  product    Product       @relation(fields: [product_id], references: [id])
+  name       String
+  price      Float
+  status     ProductStatus
+
+  @@map("product_logs")
 }
 
-enum Status {
-  active
-  inactive
+model InventoryTransaction {
+  id         String                   @id @default(uuid())
+  store_id   String
+  store      Store                    @relation(fields: [store_id], references: [id])
+  product_id String
+  product    Product                  @relation(fields: [product_id], references: [id])
+  type       InventoryTransactionType
+  amount     Int
+
+  @@map("inventory_transactions")
 }
 
 model Category {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String @unique
+
+  @@map("categories")
+}
+
+enum ProductStatus {
+  active
+  inactive
+
+  @@map("product_status")
+}
+
+enum InventoryTransactionType {
+  inflow
+  outflow
+
+  @@map("inventory_transaction_type")
 }

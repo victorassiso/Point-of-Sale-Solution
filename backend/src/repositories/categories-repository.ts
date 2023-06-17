@@ -1,6 +1,6 @@
 import { Category } from "@prisma/client";
 
-export interface CategoriesUpdateInput {
+export interface CategoryUpdateInput {
   id: string;
   name?: string;
 }
@@ -10,6 +10,6 @@ export interface CategoriesRepository {
   list(): Promise<Category[]>;
   findByName(name: string): Promise<Category | null>;
   findById(id: string): Promise<Category | null>;
-  update(data: CategoriesUpdateInput): Promise<Category>;
+  update(data: CategoryUpdateInput): Promise<Category>;
   delete(id: string): Promise<void>;
 }

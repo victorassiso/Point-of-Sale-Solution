@@ -1,6 +1,9 @@
 import { prisma } from "@/lib/prisma";
 import { Category, Prisma } from "@prisma/client";
-import { CategoriesRepository, CategoriesUpdateInput } from "../categories-repository";
+import {
+  CategoriesRepository,
+  CategoryUpdateInput,
+} from "../categories-repository";
 
 export class PrismaCategoriesRepository implements CategoriesRepository {
   async create(name: string) {
@@ -35,7 +38,7 @@ export class PrismaCategoriesRepository implements CategoriesRepository {
     return category;
   }
 
-  async update(data: CategoriesUpdateInput) {
+  async update(data: CategoryUpdateInput) {
     const category = await prisma.category.update({
       where: {
         id: data.id,

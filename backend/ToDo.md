@@ -4,12 +4,12 @@
 
 - [x] O usuário deve poder se cadastrar
 
-## Categorias:
+### Categorias:
 
 - [x] O usuario deve poder criar uma nova categoria;
-- \*[ ] O usuário deve poder visualizar todas as categorias;
-- [ ] O usuário deve poder atualizar uma categoria;
-- [ ] O usuário deve poder excluir uma categoria;
+- [x] O usuário deve poder visualizar todas as categorias;
+- [x] O usuário deve poder atualizar uma categoria;
+- [x] O usuário deve poder excluir uma categoria;
 
 ### Produtos:
 
@@ -31,14 +31,16 @@
 ### Estoques:
 
 - [x] O usuário deve poder visualizar a quantidade de produtos disponíveis em cada loja
-- \*[ ] O usuário deve poder atualizar a quantidade de produtos disponíveis em cada loja
+- \*[ ] O usuário deve poder atualizar a quantidade de produtos disponíveis em cada loja. Em termos técnicos: deve ser possível atualizar inventários;
+- \*[ ] O usuário deve poder visualizar o histórico de transações nos estoques
+- \*[ ] O usuário deve poder visualizar a quantidade de itens vendidos semanalmente no estoque de cada loja
 
 ### Vendas:
 
 - [x] O usuário deve poder realizar uma venda;
 - \*[ ] O usuário deve poder visualizar todas as vendas;
 - [x] O usuário deve poder visualizar todas as vendas de uma loja específica;
-- \*[ ] O usuário deve poder visualizar uma venda específica;
+- [ ] O usuário deve poder visualizar uma venda específica;
 
 ### Itens de Venda:
 
@@ -46,21 +48,22 @@
 
 # Requisitos de Negócio
 
-## Categorias:
+### Categorias:
 
-- \*[ ] O usuario não deve poder criar categories duplicadas com o mesmo nome
+- [x] Não deve ser possível cadastrar duas categorias com o mesmo nome
 
 ### Usuários:
 
-- [x] O usuário não deve poder se cadastrar utilizando um e-mail já existente
+- [x] Não deve ser possível cadastrar dois usuários com o mesmo email
 
 ### Produtos:
 
-- [ ] Não deve ser possível excluir um produto que está vinculado a um estoque;
-- [ ] Dois produtos não devem poder ter o mesmo nome;
+- [x] Não deve ser possível cadastrar dois produtos com o mesmo nome
+- [ ] Não deve ser possível excluir um produto que esteja vinculado a um estoque;
 
 ### Lojas:
 
+- [ ] Não deve ser possível cadastrar duas lojas com o mesmo nome;
 - [ ] Não deve ser possível excluir uma loja que esteja vinculada a uma venda;
 - [ ] Não deve ser possível excluir uma loja cujo estoque esteja vinculado a uma transação de estoque;
 - [ ] Duas lojas não devem poder ter o mesmo nome;
