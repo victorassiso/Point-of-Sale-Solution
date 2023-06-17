@@ -15,7 +15,7 @@ export interface InventoriesRepository {
   find(data: InventoryFindInput): Promise<Inventory | null>;
   create(data: InventoryCreateAndUpdateInput): Promise<Inventory>;
   update(data: InventoryCreateAndUpdateInput): Promise<Inventory>;
-  listAll(): Promise<Inventory[]>;
+  list(): Promise<Inventory[]>;
   listByStore(store_id: string): Promise<Inventory[]>;
   delete(id: string): Promise<void>;
 }

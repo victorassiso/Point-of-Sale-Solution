@@ -8,6 +8,7 @@ import { createStore } from "./controllers/create-store";
 import { listStores } from "./controllers/list-stores";
 import { listInventoriesByStore } from "./controllers/list-inventories-by-store";
 import { createInvoice } from "./controllers/create-invoice";
+import { listInventories } from "./controllers/list-inventories";
 
 export async function appRoutes(app: FastifyInstance) {
   app.post("/users", register);
@@ -21,6 +22,7 @@ export async function appRoutes(app: FastifyInstance) {
   app.get("/stores", listStores);
 
   app.options("/inventories", listInventoriesByStore);
+  app.get("/inventories", listInventories);
 
   app.post("/invoices", createInvoice);
 }

@@ -23,8 +23,10 @@ model Product {
   id            String        @id @default(uuid())
   name          String        @unique
   price         Float
+  status        Status        @default(inactive)
   invoice_items InvoiceItem[]
   inventories   Inventory[]
+  product_logs  ProductLog[]
 
   @@map("products")
 }
@@ -71,4 +73,24 @@ model User {
   created_at    DateTime @default(now())
 
   @@map("users")
+}
+
+model ProductLog {
+  id            String    @id @default(uuid())
+  created_at    DateTime  @default(now())
+  product_id    String
+  product       Product   @relation(fields: [product_id], references: [id])
+  name          String
+  price         Float
+  status        Status
+}
+
+enum Status {
+  active
+  inactive
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String
 }

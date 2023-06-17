@@ -1,4 +1,4 @@
-import { ProductNotFound } from "@/use-cases/errors/product-not-found";
+import { ProductNotFoundError } from "@/use-cases/errors/product-not-found";
 import { makeUpdateProductUseCase } from "@/use-cases/factories/make-update-product-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -20,7 +20,7 @@ export async function updateProduct(
 
     await updateProductUseCase.execute({ id, name, price });
   } catch (err) {
-    if (err instanceof ProductNotFound) {
+    if (err instanceof ProductNotFoundError) {
       return reply.status(404).send({ message: err.message });
     }
     throw err;

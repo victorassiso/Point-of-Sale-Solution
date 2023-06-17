@@ -1,4 +1,4 @@
-import { ProductNotFound } from "@/use-cases/errors/product-not-found";
+import { ProductNotFoundError } from "@/use-cases/errors/product-not-found";
 import { makeDeleteProductUseCase } from "@/use-cases/factories/make-delete-product-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
@@ -18,7 +18,7 @@ export async function deleteProduct(
 
     await deleteProductUseCase.execute({ id });
   } catch (err) {
-    if (err instanceof ProductNotFound) {
+    if (err instanceof ProductNotFoundError) {
       return reply.status(404).send({ message: err.message });
     }
     throw err;

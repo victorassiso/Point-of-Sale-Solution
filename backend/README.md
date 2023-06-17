@@ -5,7 +5,7 @@
 1. Install all dependencies\
    `npm install`
 
-2. Create a .env file following the example file .env.example
+2. Create a .env file following the example file '.env.example'
 
 3. Build docker container\
    `docker compose up -d`

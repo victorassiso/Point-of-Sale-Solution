@@ -16,13 +16,12 @@ export async function createStore(
   try {
     const createStoreUseCase = makeCreateStoreUseCase();
 
-    await createStoreUseCase.execute({ name });
+    const { store } = await createStoreUseCase.execute({ name });
+    return reply.status(201).send(store);
   } catch (err) {
     if (err instanceof StoreAlreadyExistsError) {
       return reply.status(409).send({ message: err.message });
     }
     throw err;
   }
-
-  return reply.status(201).send();
 }

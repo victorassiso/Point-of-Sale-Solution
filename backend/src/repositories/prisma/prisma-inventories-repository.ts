@@ -38,7 +38,7 @@ export class PrismaInventoriesRepository implements InventoriesRepository {
     });
     return inventory;
   }
-  async listAll() {
+  async list() {
     const inventory = await prisma.inventory.findMany();
 
     return inventory;
