@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Category, Prisma } from "@prisma/client";
-import { CategoriesRepository } from "../categories-repository";
+import { CategoriesRepository, CategoriesUpdateInput } from "../categories-repository";
 
 export class PrismaCategoriesRepository implements CategoriesRepository {
   async create(name: string) {
@@ -21,6 +21,27 @@ export class PrismaCategoriesRepository implements CategoriesRepository {
     const category = await prisma.category.findUnique({
       where: {
         name,
+      },
+    });
+    return category;
+  }
+
+  async findById(id: string) {
+    const category = await prisma.category.findUnique({
+      where: {
+        id,
+      },
+    });
+    return category;
+  }
+
+  async update(data: CategoriesUpdateInput) {
+    const category = await prisma.category.update({
+      where: {
+        id: data.id,
+      },
+      data: {
+        name: data.name,
       },
     });
     return category;
