@@ -11,4 +11,5 @@ export interface CategoriesRepository {
   findByName(name: string): Promise<Category | null>;
   findById(id: string): Promise<Category | null>;
   update(data: CategoriesUpdateInput): Promise<Category>;
+  delete(id: string): Promise<void>;
 }

@@ -46,4 +46,13 @@ export class PrismaCategoriesRepository implements CategoriesRepository {
     });
     return category;
   }
+
+  async delete(id: string) {
+    console.log(id);
+    await prisma.category.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

@@ -12,6 +12,7 @@ import { listInventories } from "./controllers/list-inventories";
 import { createCategory } from "./controllers/create-category";
 import { listCategories } from "./controllers/list-categories";
 import { updateCategories } from "./controllers/update-categories";
+import { deleteCategories } from "./controllers/delete-categories";
 
 export async function appRoutes(app: FastifyInstance) {
   app.post("/users", register);
@@ -32,4 +33,5 @@ export async function appRoutes(app: FastifyInstance) {
   app.post("/categories", createCategory);
   app.get("/categories", listCategories)
   app.put("/categories", updateCategories);
+  app.delete("/categories", deleteCategories);
 }
