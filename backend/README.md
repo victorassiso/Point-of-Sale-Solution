@@ -15,3 +15,8 @@
 
 5. Start the server\
    `npm run start:dev`
+
+## Utils
+
+1. Run Prisma Studio
+   `npx prisma studio`

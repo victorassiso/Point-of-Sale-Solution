@@ -1,0 +1,51 @@
+:root {
+  --blue-600: #002060;
+  --blue-400: #b4c7e7;
+
+  --grey-100: #f2f2f2;
+  --grey-200: #e7e6e6;
+  --grey-400: #a5a5a5;
+  --grey-700: #262626;
+
+  -green-700: #00b050;
+
+  --orange-700: #ed7d31;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  border: 1px solid purple;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  border: 1px solid orange;
+  background-color: var(--grey-100);
+  display: flex;
+  justify-content: center;
+}
+
+.outer-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  border: 1px solid green;
+}
+
+.sidebar {
+  display: table-cell;
+  border: 1px solid red;
+  height: 100%;
+  background-color: var(--grey-200);
+}
+
+.content {
+  display: table-cell;
+  border: 1px solid blue;
+}
