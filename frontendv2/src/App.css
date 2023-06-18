@@ -1,0 +1,44 @@
+:root {
+  --white: #ffff;
+
+  --blue-600: #002060;
+  --blue-400: #b4c7e7;
+
+  --grey-100: #f2f2f2;
+  --grey-200: #e7e6e6;
+  --grey-400: #a5a5a5;
+  --grey-700: #262626;
+
+  --green-700: #00b050;
+
+  --orange-700: #ed7d31;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  /* box-sizing: border-box; */
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  /* min-height: 100vh; */
+  /* display: flex; */
+  background-color: var(--blue-600);
+}
+.appContainer {
+  min-height: 100vh;
+  display: flex;
+  /* background-color: var(--green-700); */
+}
+
+.appSidebar {
+  width: 15%;
+  min-width: 180px;
+  background-color: var(--grey-200);
+}
+
+.appContent {
+  width: 85%;
+  background-color: var(--grey-100);
+}
