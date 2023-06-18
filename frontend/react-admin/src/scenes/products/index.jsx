@@ -4,8 +4,21 @@ import { tokens } from "../../theme";
 
 import Header from "../../components/Header";
 import { mockDataTeam } from "../../data/mockData";
+import axios from "../../data/axios";
+import { useEffect, useState } from "react";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get("/products");
+      const products = request.data.products;
+      setProducts(products);
+      return request;
+    }
+    fetchData();
+  }, []);
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -58,7 +71,7 @@ const Products = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={products} columns={columns} />
       </Box>
     </Box>
   );
