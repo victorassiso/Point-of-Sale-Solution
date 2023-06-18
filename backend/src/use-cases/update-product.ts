@@ -1,6 +1,7 @@
 import { ProductsRepository } from "@/repositories/products-repository";
 import { Product } from "@prisma/client";
 import { ProductNotFoundError } from "./errors/product-not-found";
+import { makeCreateProductsLogUseCase } from "./factories/make-create-products-log-use-case";
 
 interface UpdateProductUseCaseRequest {
   id: string;
@@ -29,6 +30,19 @@ export class UpdateProductUseCase {
       id,
       name,
       price,
+    });
+
+    // Create product log
+    const createProductLogUseCase = makeCreateProductsLogUseCase();
+    let status = product.status
+    let product_id = product.id
+    let nameUpdated = product.name
+    let priceUpdated = product.price
+    createProductLogUseCase.execute({
+      name: nameUpdated,
+      price: priceUpdated,
+      product_id,
+      status
     });
 
     return { product };

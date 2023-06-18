@@ -1,10 +1,11 @@
 import { ProductsRepository } from "@/repositories/products-repository";
-import { Product, Store } from "@prisma/client";
+import { Product, Store, ProductStatus } from "@prisma/client";
 import { ProductAlreadyExistsError } from "./errors/product-already-exists";
 import { ListInventoriesByStoreUseCase } from "./list-inventories-by-store";
 import { PrismaStoresRepository } from "@/repositories/prisma/prisma-stores-repository";
 import { makeListStoresUseCase } from "./factories/make-list-stores-use-case";
 import { makeCreateInventoryUseCase } from "./factories/make-create-inventory-use-case";
+import { makeCreateProductsLogUseCase } from "./factories/make-create-products-log-use-case";
 
 interface CreateProductUseCaseRequest {
   name: string;
@@ -47,6 +48,16 @@ export class CreateProductUseCase {
       // Create an inventory associating the store with the recently created product
       createInventoryUseCase.execute({ store_id, product_id, balance });
     }
+
+    // Create product log
+    const createProductLogUseCase = makeCreateProductsLogUseCase();
+    let status = product.status
+    createProductLogUseCase.execute({
+      name,
+      price,
+      product_id,
+      status
+    });
     return { product };
   }
 }
