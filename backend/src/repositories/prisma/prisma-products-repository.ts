@@ -37,6 +37,7 @@ export class PrismaProductsRepository implements ProductsRepository {
       data: {
         name: data.name,
         price: data.price,
+        status: data.status,
       },
     });
     return product;

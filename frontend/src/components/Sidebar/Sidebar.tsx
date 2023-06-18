@@ -32,13 +32,13 @@ export function Sidebar() {
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/products">
             <i className="bx bx-purchase-tag"></i>
             <span className="links_name">Produtos</span>
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="/inventories">
             <i className="bx bx-package"></i>
             <span className="links_name">Inventário</span>
           </a>

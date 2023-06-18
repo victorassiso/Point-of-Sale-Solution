@@ -1,9 +1,10 @@
-import { Prisma, Product } from "@prisma/client";
+import { Prisma, Product, ProductStatus } from "@prisma/client";
 
 export interface ProductUpdateInput {
   id: string;
   name?: string;
   price?: number;
+  status?: ProductStatus;
 }
 
 export interface ProductsRepository {

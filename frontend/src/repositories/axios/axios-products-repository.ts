@@ -12,10 +12,14 @@ export class AxiosProductsRepository implements ProductsRepository {
     return products;
   }
   async create(data: CreateProductInput) {
+    console.log("Create...");
+    console.log(data);
     const response = await axios.post("/products", {
-      name: data.name,
-      price: data.price,
-      status: data.status,
+      data: {
+        name: data.name,
+        price: data.price,
+        status: data.status,
+      },
     });
     const product = response.data.product;
     return product;

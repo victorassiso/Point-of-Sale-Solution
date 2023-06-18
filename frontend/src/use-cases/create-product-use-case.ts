@@ -7,7 +7,7 @@ import {
 interface CreateProductUseCaseRequest {
   name: string;
   price: number;
-  status: ProductStatus;
+  status?: ProductStatus;
 }
 
 interface CreateProductUseCaseResponse {
@@ -21,11 +21,14 @@ export class CreateProductUseCase {
     price,
     status,
   }: CreateProductUseCaseRequest): Promise<CreateProductUseCaseResponse> {
+    console.log("CreateProductUseCase...");
+    console.log({ name, price, status });
     const product = await this.productsRepository.create({
       name,
       price,
       status,
     });
+    console.log(product);
     return { product };
   }
 }

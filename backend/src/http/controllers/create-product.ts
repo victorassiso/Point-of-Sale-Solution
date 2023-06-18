@@ -10,15 +10,17 @@ export async function createProduct(
   const createProductBodySchema = z.object({
     name: z.string(),
     price: z.number(),
+    status: z.enum(["active", "inactive"]),
   });
 
-  const { name, price } = createProductBodySchema.parse(request.body);
+  const { name, price, status } = createProductBodySchema.parse(request.body);
 
   try {
     const createProductUseCase = makeCreateProductUseCase();
     const product = await createProductUseCase.execute({
       name,
       price,
+      status,
     });
     return reply.status(201).send(product);
   } catch (err) {

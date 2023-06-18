@@ -1,5 +1,5 @@
 import { ProductsRepository } from "@/repositories/products-repository";
-import { Product } from "@prisma/client";
+import { Product, ProductStatus } from "@prisma/client";
 import { ProductAlreadyExistsError } from "./errors/product-already-exists";
 import { makeListStoresUseCase } from "./factories/make-list-stores-use-case";
 import { makeCreateInventoryUseCase } from "./factories/make-create-inventory-use-case";
@@ -8,6 +8,7 @@ import { makeCreateProductsLogUseCase } from "./factories/make-create-products-l
 interface CreateProductUseCaseRequest {
   name: string;
   price: number;
+  status?: ProductStatus;
 }
 
 interface CreateProductUseCaseResponse {
@@ -19,6 +20,7 @@ export class CreateProductUseCase {
   async execute({
     name,
     price,
+    status,
   }: CreateProductUseCaseRequest): Promise<CreateProductUseCaseResponse> {
     const productWithSameName = await this.productsRepository.findByName(name);
 
@@ -28,6 +30,7 @@ export class CreateProductUseCase {
     const product = await this.productsRepository.create({
       name,
       price,
+      status,
     });
 
     // Get all stores
@@ -49,12 +52,12 @@ export class CreateProductUseCase {
 
     // Create product log
     const createProductLogUseCase = makeCreateProductsLogUseCase();
-    let status = product.status;
+    let _status = product.status;
     createProductLogUseCase.execute({
       name,
       price,
       product_id,
-      status,
+      status: _status,
     });
     return { product };
   }

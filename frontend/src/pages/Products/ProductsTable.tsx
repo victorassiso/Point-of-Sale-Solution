@@ -21,8 +21,12 @@ import {
 } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { status } from "../../data/mockProductsData";
-import { Product } from "../../repositories/products-repository";
+import {
+  CreateProductInput,
+  Product,
+} from "../../repositories/products-repository";
 import { listProducts } from "../../controllers/list-products";
+import { createProduct } from "../../controllers/create-product";
 
 export const ProductsTable = () => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
@@ -32,16 +36,21 @@ export const ProductsTable = () => {
   }>({});
 
   useEffect(() => {
-    const fetchData = async () => {
+    const _listProducts = async () => {
       const { products } = await listProducts();
       setTableData(products);
     };
-    fetchData();
+    _listProducts();
   }, []);
 
-  const handleCreateNewRow = (data: Product) => {
-    tableData.push(data);
-    setTableData([...tableData]);
+  const handleCreateNewRow = (data: CreateProductInput) => {
+    const _createProduct = async () => {
+      const { product } = await createProduct(data);
+      console.log(product);
+      // tableData.push(product);
+      // setTableData([...tableData]);
+    };
+    _createProduct();
   };
 
   const handleSaveRowEdits: MaterialReactTableProps<Product>["onEditingRowSave"] =
@@ -188,7 +197,7 @@ export const ProductsTable = () => {
           </Button>
         )}
       />
-      <CreateNewAccountModal
+      <CreateNewProductModal
         columns={columns}
         open={createModalOpen}
         onClose={() => setCreateModalOpen(false)}
@@ -201,12 +210,12 @@ export const ProductsTable = () => {
 interface CreateModalProps {
   columns: MRT_ColumnDef<Product>[];
   onClose: () => void;
-  onSubmit: (data: Product) => void;
+  onSubmit: (data: CreateProductInput) => void;
   open: boolean;
 }
 
 //example of creating a mui dialog modal for creating new rows
-export const CreateNewAccountModal = ({
+export const CreateNewProductModal = ({
   open,
   columns,
   onClose,
@@ -227,7 +236,7 @@ export const CreateNewAccountModal = ({
 
   return (
     <Dialog open={open}>
-      <DialogTitle textAlign="center">Create New Account</DialogTitle>
+      <DialogTitle textAlign="center">Create New Product</DialogTitle>
       <DialogContent>
         <form onSubmit={(e) => e.preventDefault()}>
           <Stack
@@ -253,7 +262,7 @@ export const CreateNewAccountModal = ({
       <DialogActions sx={{ p: "1.25rem" }}>
         <Button onClick={onClose}>Cancel</Button>
         <Button color="secondary" onClick={handleSubmit} variant="contained">
-          Create New Account
+          Create New Product
         </Button>
       </DialogActions>
     </Dialog>
