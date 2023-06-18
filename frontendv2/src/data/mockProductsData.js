@@ -1,1 +1,1 @@
-export const states = ["active", "inactive"];
+export const status = ["active", "inactive"];

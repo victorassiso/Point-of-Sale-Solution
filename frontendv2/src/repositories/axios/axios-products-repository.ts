@@ -1,17 +1,17 @@
 import {
   ProductsRepository,
-  Product,
-  CreateProdutInput,
+  CreateProductInput,
+  UpdateProductInput,
 } from "../products-repository";
 import axios from "./axios";
 
 export class AxiosProductsRepository implements ProductsRepository {
-  async list(): Promise<Product[]> {
+  async list() {
     const response = await axios.get("/products");
     const products = response.data.products;
     return products;
   }
-  async create(data: CreateProdutInput): Promise<Product> {
+  async create(data: CreateProductInput) {
     const response = await axios.post("/products", {
       name: data.name,
       price: data.price,
@@ -20,7 +20,7 @@ export class AxiosProductsRepository implements ProductsRepository {
     const product = response.data.product;
     return product;
   }
-  async update(data: CreateProdutInput): Promise<Product> {
+  async update(data: UpdateProductInput) {
     const response = await axios.put("/products", {
       name: data.name,
       price: data.price,
