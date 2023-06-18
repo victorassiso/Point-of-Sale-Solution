@@ -27,4 +27,9 @@ export class PrismaProductsLogRepository implements ProductsLogRepository {
     return productsLog;
   }
 
+  async list(){
+    const productsLog = await prisma.productLog.findMany();
+    return productsLog;
+  }
+
 }

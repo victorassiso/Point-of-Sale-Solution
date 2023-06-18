@@ -1,15 +1,19 @@
 import { ProductsLogRepository } from "@/repositories/products-log-repository";
 import { ProductLog } from "@prisma/client";
 
+interface ListProductsLogRequest {
+  product_id: string;
+}
+
 interface ListProductsLogResponse {
   productsLog: ProductLog[];
 }
 
-export class ListProductsLogUseCase {
+export class ListProductsLogByProductUseCase {
   constructor(private productsLogRepository: ProductsLogRepository) {}
 
-  async execute(): Promise<ListProductsLogResponse> {
-    const productsLog = await this.productsLogRepository.list();
+  async execute({ product_id }:ListProductsLogRequest): Promise<ListProductsLogResponse> {
+    const productsLog = await this.productsLogRepository.listByProduct(product_id);
     return { productsLog };
   }
 }

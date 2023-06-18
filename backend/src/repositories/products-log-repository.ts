@@ -10,4 +10,5 @@ export interface ProductsLogCreateInput {
 export interface ProductsLogRepository {
   create(data: ProductsLogCreateInput): Promise<ProductLog>;
   listByProduct(product_id: string): Promise<ProductLog[]>;
+  list(): Promise<ProductLog[]>;
 }
