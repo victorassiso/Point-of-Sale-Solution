@@ -1,20 +1,30 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma, ProductLog } from "@prisma/client";
 import { ProductsLogRepository, ProductsLogCreateInput } from "../products-log-repository";
 
 export class PrismaProductsLogRepository implements ProductsLogRepository {
+
   async create(data: ProductsLogCreateInput) {
-    const product = await prisma.productLog.create({
+    const productLog = await prisma.productLog.create({
       data,
     });
 
-    return product;
+    return productLog;
   }
 
-  // async list() {
-  //   const products = await prisma.product.findMany();
+  async listByProduct(product_id: string) {
+    const productsLog = await prisma.productLog.findMany({
+      where:{
+        product_id
+      },
+      orderBy: [
+        {
+          created_at: 'desc',
+        }
+      ],
+    });
 
-  //   return products;
-  // }
+    return productsLog;
+  }
 
 }
