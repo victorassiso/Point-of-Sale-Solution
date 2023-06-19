@@ -36,7 +36,9 @@ const Home = () => {
           <ShowOnLogin>
             <li>
               <button className="--btn --btn-primary">
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard" style={{ color: "white" }}>
+                  Dashboard
+                </Link>
               </button>
             </li>
           </ShowOnLogin>

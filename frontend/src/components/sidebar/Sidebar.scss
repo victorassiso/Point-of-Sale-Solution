@@ -86,6 +86,7 @@ main {
   align-items: center;
   width: 1.5em;
   font-size: 25px;
+  color: var(--dark-blue);
 }
 
 .sidebar-title .arrow-icon {
@@ -113,11 +114,11 @@ main {
 }
 
 .s-child:hover {
-  border: 1px solid var(--light-blue);
+  border: 1px solid var(--dark-blue);
 }
 
 a {
-  color: var(--colo-dark);
+  color: var(--dark-blue);
   text-decoration: none;
   transition: all 0.2s;
 }
@@ -138,7 +139,7 @@ a {
   height: 100%;
   right: 0;
   top: 0;
-  background-color: var(--light-blue);
+  background-color: var(--color-danger);
 }
 
 .sublink .sidebar-item .sidebar-title {
