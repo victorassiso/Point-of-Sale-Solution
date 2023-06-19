@@ -35,7 +35,7 @@ const ProductDetail = () => {
     if (isError) {
       console.log(message);
     }
-  }, [isLoggedIn, isError, message, dispatch]);
+  }, [isLoggedIn, isError, message, dispatch, id]);
 
   return (
     <div className="product-detail">
@@ -54,7 +54,7 @@ const ProductDetail = () => {
                 <p> Sem imagem para o produto </p>
               )}
             </Card>
-            <h4>Product Availability: {stockStatus(product.quantity)}</h4>
+            <h4>Disponibilidade do Produto: {stockStatus(product.quantity)}</h4>
             <hr />
             <h4>
               <span className="badge">Nome: </span> &nbsp; {product.name}
